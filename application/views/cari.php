@@ -9,31 +9,16 @@
                     <th scope="col">
                         <!-- Button trigger modal -->
                         <a class="btn btn-outline-primary" data-toggle="modal" data-target="#logoutModal">
-                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                             Tambah Data Pasien
                         </a>
                     </th>
-                    <th scope="col">
-                        <!-- Button trigger modal -->
-                        <a class="btn btn-outline-primary" href="<?php echo base_url('home/penanggung') ?>">
-                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Tambah Data Penanggung
-                        </a>
-                    </th>
-                    <th scope="col">
-                        <!-- Button trigger modal -->
-                        <a class="btn btn-outline-primary" href="<?php echo base_url('home/poliklinik') ?>">
-                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Tambah Data Poliklinik
-                        </a>
-                    </th>
                     <th width="300px" scope="col">
-                        <form action="home/cari" method="POST">
-                            <div class="input-group mb-1">
-                                <button class="btn btn-outline-secondary" type="submit">Cari</button>
-                                <input type="text" class="form-control" name="cari" id="cari">
-                            </div>
-                        </form>
+                        <?php echo form_open('home/cari/', ['method' => 'post']); ?>
+                        <div class="input-group mb-1">
+                            <button class="btn btn-outline-secondary" type="submit">Cari</button>
+                            <input type="text" class="form-control" name="cari" id="cari">
+                        </div>
+                        <?php echo form_close(); ?>
                     </th>
                 </thead>
             </table>
@@ -45,7 +30,9 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Form Tambah Data Pasien</h5>
-
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
                         </div>
                         <div class="modal-body">
                             <table class="table table-striped">
@@ -139,7 +126,7 @@
                         <tbody>
                             <?php
                             $no = 1;
-                            foreach ($database as $db) : ?>
+                            foreach ($hasil as $db) : ?>
                                 <tr>
                                     <th scope="col"><?php echo $no; ?></th>
                                     <td><?php echo $db->no_transaksi; ?></td>
